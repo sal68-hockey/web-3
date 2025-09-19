@@ -1,260 +1,94 @@
-<style>
-  :root {
-    --royal: #4169e1;
-    --blue-gray: #667788;
-    --gray: #c1c6c8;
-    --dark: #2f3e46;
-    --light: #f0f2f5;
-    --white: #fff;
-    --shadow: rgba(65, 105, 225, 0.2);
-    --accent: #b0c4de;
-  }
+body {
+  background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Light paper texture */
+  background-color: var(--light);
+  font-family: 'Open Sans', sans-serif;
+  color: var(--dark);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+section {
+  position: relative;
+  background: var(--white);
+  margin: 3rem 0;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: rotateZ(-0.5deg); /* slight tilt */
+}
 
-  body {
-    font-family: 'Open Sans', sans-serif;
-    background: var(--light);
-    color: var(--dark);
-    overflow-x: hidden;
-    animation: fadeInBody 1.5s ease forwards;
-    line-height: 1.6;
-  }
+section:nth-child(even) {
+  transform: rotateZ(0.8deg); /* alternate tilt */
+}
 
-  @keyframes fadeInBody {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+section::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  z-index: -1;
+  border-radius: 16px;
+  transform: rotate(-2deg);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
 
-  .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 0 20px;
-  }
+section:hover {
+  transform: scale(1.03) rotateZ(0deg);
+  box-shadow: 0 25px 45px rgba(65, 105, 225, 0.25);
+}
 
-  #intro {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: linear-gradient(135deg, var(--royal), var(--blue-gray));
-    color: var(--white);
-    z-index: 9999;
-    animation: fadeOutIntro 1s ease 3.5s forwards;
-  }
+section h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--royal);
+  text-transform: uppercase;
+  padding-left: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
+  position: relative;
+}
 
-  #intro.hidden {
-    display: none;
-  }
+section h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
 
-  #intro h1,
-  header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
-    animation: slideIn 1.5s ease forwards;
-  }
+#intro {
+  background: url('https://www.transparenttextures.com/patterns/gplay.png'), linear-gradient(135deg, var(--royal), var(--blue-gray));
+  background-size: cover;
+  color: var(--white);
+}
 
-  #intro p,
-  header p {
-    font-style: italic;
-    font-size: 1.3rem;
-    opacity: 0.8;
-    animation: fadeInText 2s ease 5s forwards;
-  }
+footer {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, var(--royal), var(--blue-gray));
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+}
 
-  @keyframes slideIn {
-    from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+/* Sticky Note look for contact info */
+.contact-info {
+  background: #fff9c4;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  border: 2px dashed #fbc02d;
+  transform: rotate(-1deg);
+}
 
-  @keyframes fadeInText {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 0.8;
-    }
-  }
+/* Add animation delays to intro for more layering feel */
+#intro h1 {
+  animation-delay: 0.3s;
+}
 
-  @keyframes fadeOutIntro {
-    to {
-      opacity: 0;
-      pointer-events: none;
-      visibility: hidden;
-    }
-  }
+#intro p {
+  animation-delay: 1s;
+}
 
-  header {
-    background: var(--royal);
-    color: var(--white);
-    padding: 3rem 1rem;
-    text-align: center;
-    box-shadow: 0 8px 20px var(--shadow);
-    border-bottom: 4px solid var(--accent);
-  }
-
-  /* SECTION WRAPPER FOR OFFSET LAYOUT */
-  .offset-section-wrapper {
-    margin: 3rem 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .offset-section {
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(65, 105, 225, 0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    max-width: 900px;
-    position: relative;
-  }
-
-  .offset-left {
-    transform: translateX(-10px);
-    background: #f9fbfd;
-  }
-
-  .offset-right {
-    transform: translateX(10px);
-  }
-
-  .offset-section:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 45px rgba(65, 105, 225, 0.25);
-  }
-
-  .offset-section h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--royal);
-    text-transform: uppercase;
-    border-left: 6px solid var(--royal);
-    padding-left: 1rem;
-    margin-bottom: 1.2rem;
-    letter-spacing: 1px;
-    font-size: 1.8rem;
-  }
-
-  ul {
-    padding-left: 1.2rem;
-  }
-
-  li {
-    margin-bottom: 0.6rem;
-    color: var(--blue-gray);
-    font-size: 1.1rem;
-  }
-
-  a {
-    color: var(--royal);
-    font-weight: 700;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  a:hover {
-    color: var(--blue-gray);
-    text-decoration: underline;
-  }
-
-  .contact-info p {
-    font-size: 1.1rem;
-    margin: 0.3rem 0;
-    color: var(--blue-gray);
-  }
-
-  table {
-    width: 100%;
-    margin-top: 1.5rem;
-    border-collapse: collapse;
-    font-size: 1.05rem;
-    background: var(--white);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  }
-
-  th,
-  td {
-    border: 1px solid var(--gray);
-    padding: 14px;
-    text-align: center;
-  }
-
-  th {
-    background: var(--gray);
-    color: var(--royal);
-    text-transform: uppercase;
-  }
-
-  td:first-child {
-    text-align: left;
-    font-weight: 700;
-    color: var(--royal);
-  }
-
-  tr:hover td {
-    background: var(--light);
-  }
-
-  footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: var(--royal);
-    color: var(--white);
-    margin-top: 5rem;
-    box-shadow: 0 -4px 15px var(--shadow);
-  }
-
-  footer a {
-    color: var(--gray);
-    text-decoration: none;
-  }
-
-  footer a:hover {
-    color: var(--light);
-    text-decoration: underline;
-  }
-
-  @media (max-width: 600px) {
-    header h1 {
-      font-size: 2.2rem;
-    }
-
-    .offset-left,
-    .offset-right {
-      transform: none !important;
-    }
-
-    .offset-section {
-      padding: 1.5rem 1rem;
-    }
-
-    table,
-    th,
-    td {
-      font-size: 0.95rem;
-    }
-  }
-</style>
