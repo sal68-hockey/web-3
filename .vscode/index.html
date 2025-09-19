@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Colby College Recruitment</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+
   <style>
     :root {
       --royal: #4169e1;
@@ -314,5 +317,28 @@
       document.body.style.overflow = 'hidden';
     });
   </script>
+  <script>
+  window.addEventListener('load', () => {
+    const intro = document.getElementById('intro');
+
+    intro.addEventListener('animationend', () => {
+      intro.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+
+      // Create sticky note
+      const note = document.createElement('div');
+      note.innerHTML = "<strong>Tip:</strong> Explore Student Life and Alumni sections!";
+      note.className = "sticky-note";
+      document.body.appendChild(note);
+
+      // Remove note on click
+      note.addEventListener('click', () => {
+        note.remove();
+      });
+    });
+
+    document.body.style.overflow = 'hidden';
+  });
+</script>
 </body>
 </html>
