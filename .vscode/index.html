@@ -194,6 +194,267 @@
   </style>
 </head>
 <body>
+  <style>
+  :root {
+    --royal: #4169e1;
+    --blue-gray: #667788;
+    --gray: #c1c6c8;
+    --dark: #2f3e46;
+    --light: #f0f2f5;
+    --white: #fff;
+    --shadow: rgba(65, 105, 225, 0.2);
+    --accent: #b0c4de;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+    animation: fadeInBody 1.5s ease forwards;
+    line-height: 1.6;
+  }
+
+  @keyframes fadeInBody {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 20px;
+  }
+
+  #intro {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--royal), var(--blue-gray));
+    color: var(--white);
+    z-index: 9999;
+    animation: fadeOutIntro 1s ease 3.5s forwards;
+  }
+
+  #intro.hidden {
+    display: none;
+  }
+
+  #intro h1,
+  header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    animation: slideIn 1.5s ease forwards;
+  }
+
+  #intro p,
+  header p {
+    font-style: italic;
+    font-size: 1.3rem;
+    opacity: 0.8;
+    animation: fadeInText 2s ease 5s forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInText {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes fadeOutIntro {
+    to {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+  }
+
+  header {
+    background: var(--royal);
+    color: var(--white);
+    padding: 3rem 1rem;
+    text-align: center;
+    box-shadow: 0 8px 20px var(--shadow);
+    border-bottom: 4px solid var(--accent);
+  }
+
+  /* SECTION WRAPPER FOR OFFSET LAYOUT */
+  .offset-section-wrapper {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .offset-section {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(65, 105, 225, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+  }
+
+  .offset-left {
+    transform: translateX(-10px);
+    background: #f9fbfd;
+  }
+
+  .offset-right {
+    transform: translateX(10px);
+  }
+
+  .offset-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 45px rgba(65, 105, 225, 0.25);
+  }
+
+  .offset-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--royal);
+    text-transform: uppercase;
+    border-left: 6px solid var(--royal);
+    padding-left: 1rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+  }
+
+  ul {
+    padding-left: 1.2rem;
+  }
+
+  li {
+    margin-bottom: 0.6rem;
+    color: var(--blue-gray);
+    font-size: 1.1rem;
+  }
+
+  a {
+    color: var(--royal);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--blue-gray);
+    text-decoration: underline;
+  }
+
+  .contact-info p {
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+    color: var(--blue-gray);
+  }
+
+  table {
+    width: 100%;
+    margin-top: 1.5rem;
+    border-collapse: collapse;
+    font-size: 1.05rem;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  th,
+  td {
+    border: 1px solid var(--gray);
+    padding: 14px;
+    text-align: center;
+  }
+
+  th {
+    background: var(--gray);
+    color: var(--royal);
+    text-transform: uppercase;
+  }
+
+  td:first-child {
+    text-align: left;
+    font-weight: 700;
+    color: var(--royal);
+  }
+
+  tr:hover td {
+    background: var(--light);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--royal);
+    color: var(--white);
+    margin-top: 5rem;
+    box-shadow: 0 -4px 15px var(--shadow);
+  }
+
+  footer a {
+    color: var(--gray);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: var(--light);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2.2rem;
+    }
+
+    .offset-left,
+    .offset-right {
+      transform: none !important;
+    }
+
+    .offset-section {
+      padding: 1.5rem 1rem;
+    }
+
+    table,
+    th,
+    td {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
   <div id="intro">
     <h1>Welcome to Colby College</h1>
     <p>Educating in the Heart of Maine</p>
@@ -217,6 +478,23 @@
     <h2>About Colby College</h2>
     <p>We nurture thoughtful, engaged individuals ready to make a difference in a global society.</p>
   </section>
+  <div class="offset-section-wrapper">
+  <section class="offset-section offset-left">
+    <h2>Academic Programs</h2>
+    <ul>
+      <li>128 credits minimum, 2.00 GPA</li>
+      ...
+    </ul>
+  </section>
+</div>
+
+<div class="offset-section-wrapper">
+  <section class="offset-section offset-right">
+    <h2>Student Life</h2>
+    <p>2,282 undergraduates, 100+ clubs, etc.</p>
+  </section>
+</div>
+
 
 
   <section class="academics container">
@@ -229,8 +507,7 @@
       <li>Areas: Arts, History, Literature, Math, Social Sciences</li>
     </ul>
     <p>See full info <a href="#">Course Catalog</a>.</p>
-  </section>
-
+  </section> 
 
   <section class="student-life container">
     <h2>Student Life</h2>

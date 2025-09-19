@@ -113,31 +113,39 @@
     border-bottom: 4px solid var(--accent);
   }
 
-  section {
-    background: var(--white);
+  /* SECTION WRAPPER FOR OFFSET LAYOUT */
+  .offset-section-wrapper {
     margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .offset-section {
+    background: var(--white);
     padding: 2.5rem;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(65, 105, 225, 0.12);
-    position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 900px;
+    position: relative;
   }
 
-  section:nth-of-type(even) {
-    background: #f9fbfd;
+  .offset-left {
     transform: translateX(-10px);
+    background: #f9fbfd;
   }
 
-  section:nth-of-type(odd) {
+  .offset-right {
     transform: translateX(10px);
   }
 
-  section:hover {
+  .offset-section:hover {
     transform: scale(1.02);
     box-shadow: 0 20px 45px rgba(65, 105, 225, 0.25);
   }
 
-  section h2 {
+  .offset-section h2 {
     font-family: 'Montserrat', sans-serif;
     color: var(--royal);
     text-transform: uppercase;
@@ -234,9 +242,13 @@
       font-size: 2.2rem;
     }
 
-    section {
-      padding: 1.5rem 1rem;
+    .offset-left,
+    .offset-right {
       transform: none !important;
+    }
+
+    .offset-section {
+      padding: 1.5rem 1rem;
     }
 
     table,
