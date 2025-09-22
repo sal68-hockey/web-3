@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Colby College Recruitment</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-
   <style>
     :root {
       --royal: #4169e1;
@@ -18,12 +15,18 @@
       --white: #fff;
       --shadow: rgba(65, 105, 225, 0.3);
       --accent: #b0c4de;
+      --pine-green: #2a5d34;
+      --coastal-blue: #205072;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -33,11 +36,130 @@
       overflow-x: hidden;
       line-height: 1.6;
       animation: fadeInBody 1.5s ease forwards;
+      padding-top: 60px;
     }
 
     @keyframes fadeInBody {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--royal);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      z-index: 10000;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: 60px;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.3rem;
+      user-select: none;
+    }
+
+    nav .logo svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--pine-green);
+      filter: drop-shadow(0 0 2px var(--white));
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--pine-green);
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: var(--pine-green);
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 28px;
+      height: 22px;
+      justify-content: space-between;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    nav.open ul {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: var(--royal);
+      width: 200px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      border-radius: 0 0 0 10px;
+      padding: 1rem 1.5rem;
+      gap: 1.2rem;
+      animation: fadeInMenu 0.3s ease forwards;
+    }
+
+    @keyframes fadeInMenu {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
     }
 
     .container {
@@ -156,6 +278,48 @@
       text-decoration: underline;
     }
 
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin: 3rem auto;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .contact-info {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      flex: 1 1 300px;
+      box-shadow: 0 10px 25px rgba(58, 90, 248, 0.1), 0 6px 15px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s ease;
+      color: var(--dark);
+    }
+
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 6px;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 20px 0 0 20px;
+      box-shadow: 0 0 15px rgba(243, 156, 18, 0.3);
+    }
+
+    .contact-info:hover {
+      box-shadow: 0 15px 35px rgba(58, 90, 248, 0.25), 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--royal);
+    }
+
     .contact-info p {
       font-size: 1.1rem;
       margin: 0.3rem 0;
@@ -226,10 +390,35 @@
       table, th, td {
         font-size: 0.95rem;
       }
+
+      .contact-container {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
+
+  <nav>
+    <div class="logo" aria-label="Colby College Logo and Name">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 0 L24 20 H40 L32 0 Z M20 22 L14 32 H26 L20 22 Z M44 22 L38 32 H50 L44 22 Z M16 34 L10 44 H22 L16 34 Z M48 34 L42 44 H54 L48 34 Z M12 46 L6 56 H18 L12 46 Z M52 46 L46 56 H58 L52 46 Z"/></svg>
+      Colby College
+    </div>
+    <div class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <ul>
+      <li><a href="#intro">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#student-life">Student Life</a></li>
+      <li><a href="#tuition">Tuition</a></li>
+      <li><a href="#alumni">Alumni</a></li>
+      <li><a href="#networking">Networking</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
   <div id="intro">
     <h1>Welcome to Colby College</h1>
@@ -241,18 +430,25 @@
     <p>Educating the Mind and Heart</p>
   </header>
 
-  <section class="contact-info container">
-    <p><strong>Address:</strong> 4000 Mayflower Hill, Waterville, ME 04901</p>
-    <p><strong>Phone:</strong> (207) 859-4000</p>
-    <p>Located in the scenic state of Maine</p>
-  </section>
+  <div id="contact" class="contact-container">
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p>Email: example@example.com</p>
+      <p>Phone: +123456789</p>
+    </div>
+    <div class="contact-info">
+      <h3>Office</h3>
+      <p>123 Street, City</p>
+      <p>Open 9am - 5pm</p>
+    </div>
+  </div>
 
-  <section class="about container">
+  <section id="about" class="container">
     <h2>About Colby College</h2>
     <p>We nurture thoughtful, engaged individuals ready to make a difference in a global society.</p>
   </section>
 
-  <section class="academics container">
+  <section id="academics" class="container">
     <h2>Academic Programs</h2>
     <ul>
       <li>128 credits minimum, 2.00 GPA</li>
@@ -264,14 +460,14 @@
     <p>See full info in the <a href="#">Course Catalog</a>.</p>
   </section>
 
-  <section class="student-life container">
+  <section id="student-life" class="container">
     <h2>Student Life</h2>
     <p>2,282 undergraduates, 100+ clubs, student newspaper, radio, and wellness services.</p>
     <p>A great school that will shape you into the person you want to be.</p>
     <p>Over 10% international students from more than 80 countries.</p>
   </section>
 
-  <section class="tuition container">
+  <section id="tuition" class="container">
     <h2>Tuition & Financial Aid (2025)</h2>
     <table>
       <thead>
@@ -286,7 +482,7 @@
     </table>
   </section>
 
-  <section class="alumni container">
+  <section id="alumni" class="container">
     <h2>Notable Alumni</h2>
     <ul>
       <li>Hannibal Hamlin – VP under Lincoln</li> 
@@ -298,7 +494,7 @@
     </ul>
   </section>
 
-  <section class="networking container">
+  <section id="networking" class="container">
     <h2>Community & Networking</h2>
     <p>Global alumni network provides mentorship, career support, and lifelong connection.</p>
   </section>
@@ -309,36 +505,27 @@
 
   <script>
     window.addEventListener('load', () => {
-      const intro = document.getElementById('intro');
-      intro.addEventListener('animationend', () => {
+      setTimeout(() => {
+        const intro = document.getElementById('intro');
         intro.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-      });
-      document.body.style.overflow = 'hidden';
+      }, 4500);
+    });
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('open');
+    });
+
+    menuToggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.click();
+      }
     });
   </script>
-  <script>
-  window.addEventListener('load', () => {
-    const intro = document.getElementById('intro');
-
-    intro.addEventListener('animationend', () => {
-      intro.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-
-      // Create sticky note
-      const note = document.createElement('div');
-      note.innerHTML = "<strong>Tip:</strong> Explore Student Life and Alumni sections!";
-      note.className = "sticky-note";
-      document.body.appendChild(note);
-
-      // Remove note on click
-      note.addEventListener('click', () => {
-        note.remove();
-      });
-    });
-
-    document.body.style.overflow = 'hidden';
-  });
-</script>
 </body>
 </html>
