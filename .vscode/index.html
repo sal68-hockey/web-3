@@ -4,408 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Colby College Recruitment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --royal: #4169e1;
-      --blue-gray: #667788;
-      --gray: #c1c6c8;
-      --dark: #2f3e46;
-      --light: #f0f2f5;
-      --white: #fff;
-      --shadow: rgba(65, 105, 225, 0.3);
-      --accent: #b0c4de;
-      --pine-green: #2a5d34;
-      --coastal-blue: #205072;
-    }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap"
+    rel="stylesheet"
+  />
 
-    html {
-      scroll-behavior: smooth;
-    }
+  <!-- Link to your external stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: var(--light);
-      color: var(--dark);
-      overflow-x: hidden;
-      line-height: 1.6;
-      animation: fadeInBody 1.5s ease forwards;
-      padding-top: 60px;
-    }
-
-    @keyframes fadeInBody {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--royal);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      z-index: 10000;
-      font-family: 'Montserrat', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      height: 60px;
-    }
-
-    nav .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--white);
-      font-weight: 700;
-      font-size: 1.3rem;
-      user-select: none;
-    }
-
-    nav .logo svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--pine-green);
-      filter: drop-shadow(0 0 2px var(--white));
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav ul li a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 8px 0;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background: var(--pine-green);
-      left: 0;
-      bottom: -4px;
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-
-    nav ul li a:hover,
-    nav ul li a:focus {
-      color: var(--pine-green);
-    }
-
-    nav ul li a:hover::after,
-    nav ul li a:focus::after {
-      width: 100%;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      width: 28px;
-      height: 22px;
-      justify-content: space-between;
-    }
-
-    .menu-toggle span {
-      display: block;
-      height: 3px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    nav.open ul {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background: var(--royal);
-      width: 200px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-      border-radius: 0 0 0 10px;
-      padding: 1rem 1.5rem;
-      gap: 1.2rem;
-      animation: fadeInMenu 0.3s ease forwards;
-    }
-
-    @keyframes fadeInMenu {
-      from {opacity: 0; transform: translateY(-10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 0 20px;
-    }
-
-    #intro {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, var(--royal), var(--blue-gray));
-      color: var(--white);
-      z-index: 9999;
-      animation: fadeOutIntro 1s ease 3.5s forwards;
-    }
-
-    #intro.hidden {
-      display: none;
-    }
-
-    #intro h1,
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-      letter-spacing: 2px;
-      animation: slideIn 1.5s ease forwards;
-    }
-
-    #intro p,
-    header p {
-      font-style: italic;
-      font-size: 1.3rem;
-      opacity: 0.8;
-      animation: fadeInText 2s ease 5s forwards;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeInText {
-      from { opacity: 0; }
-      to { opacity: 0.8; }
-    }
-
-    @keyframes fadeOutIntro {
-      to {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden;
-      }
-    }
-
-    header {
-      background: var(--royal);
-      color: var(--white);
-      padding: 3rem 1rem;
-      text-align: center;
-      box-shadow: 0 8px 20px var(--shadow);
-      border-bottom: 4px solid var(--accent);
-    }
-
-    section {
-      background: var(--white);
-      margin: 2.5rem 0;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(65, 105, 225, 0.12);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    section:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 45px rgba(65, 105, 225, 0.25);
-    }
-
-    section h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--royal);
-      text-transform: uppercase;
-      border-left: 6px solid var(--royal);
-      padding-left: 1rem;
-      margin-bottom: 1.2rem;
-      letter-spacing: 1px;
-      font-size: 1.8rem;
-    }
-
-    ul {
-      padding-left: 1.2rem;
-    }
-
-    li {
-      margin-bottom: 0.6rem;
-      color: var(--blue-gray);
-      font-size: 1.1rem;
-    }
-
-    a {
-      color: var(--royal);
-      font-weight: 700;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: var(--blue-gray);
-      text-decoration: underline;
-    }
-
-    .contact-container {
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      margin: 3rem auto;
-      max-width: 900px;
-      padding: 0 20px;
-    }
-
-    .contact-info {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 2rem 2.5rem;
-      flex: 1 1 300px;
-      box-shadow: 0 10px 25px rgba(58, 90, 248, 0.1), 0 6px 15px rgba(0, 0, 0, 0.05);
-      transition: box-shadow 0.3s ease;
-      color: var(--dark);
-    }
-
-    .contact-info::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 6px;
-      height: 100%;
-      background: var(--accent);
-      border-radius: 20px 0 0 20px;
-      box-shadow: 0 0 15px rgba(243, 156, 18, 0.3);
-    }
-
-    .contact-info:hover {
-      box-shadow: 0 15px 35px rgba(58, 90, 248, 0.25), 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .contact-info h3 {
-      margin-bottom: 1rem;
-      font-weight: 700;
-      color: var(--royal);
-    }
-
-    .contact-info p {
-      font-size: 1.1rem;
-      margin: 0.3rem 0;
-      color: var(--blue-gray);
-    }
-
-    table {
-      width: 100%;
-      margin-top: 1.5rem;
-      border-collapse: collapse;
-      font-size: 1.05rem;
-      background: var(--white);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    th, td {
-      border: 1px solid var(--gray);
-      padding: 14px;
-      text-align: center;
-    }
-
-    th {
-      background: var(--gray);
-      color: var(--royal);
-      text-transform: uppercase;
-    }
-
-    td:first-child {
-      text-align: left;
-      font-weight: 700;
-      color: var(--royal);
-    }
-
-    tr:hover td {
-      background: var(--light);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: var(--royal);
-      color: var(--white);
-      margin-top: 5rem;
-      box-shadow: 0 -4px 15px var(--shadow);
-    }
-
-    footer a {
-      color: var(--gray);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--light);
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-
-      section {
-        padding: 1.5rem 1rem;
-      }
-
-      table, th, td {
-        font-size: 0.95rem;
-      }
-
-      .contact-container {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-    }
-  </style>
 </head>
 <body>
 
   <nav>
     <div class="logo" aria-label="Colby College Logo and Name">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 0 L24 20 H40 L32 0 Z M20 22 L14 32 H26 L20 22 Z M44 22 L38 32 H50 L44 22 Z M16 34 L10 44 H22 L16 34 Z M48 34 L42 44 H54 L48 34 Z M12 46 L6 56 H18 L12 46 Z M52 46 L46 56 H58 L52 46 Z"/></svg>
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M32 0 L24 20 H40 L32 0 Z M20 22 L14 32 H26 L20 22 Z M44 22 L38 32 H50 L44 22 Z M16 34 L10 44 H22 L16 34 Z M48 34 L42 44 H54 L48 34 Z M12 46 L6 56 H18 L12 46 Z M52 46 L46 56 H58 L52 46 Z"
+        />
+      </svg>
       Colby College
     </div>
-    <div class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+    <div
+      class="menu-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+    >
       <span></span><span></span><span></span>
     </div>
     <ul>
@@ -433,13 +60,13 @@
   <div id="contact" class="contact-container">
     <div class="contact-info">
       <h3>Contact Us</h3>
-      <p>Email: example@example.com</p>
-      <p>Phone: +123456789</p>
+      <p>Email: registrar@colby.edu</p>
+      <p>Phone: (207) 859-4000</p>
     </div>
     <div class="contact-info">
       <h3>Office</h3>
-      <p>123 Street, City</p>
-      <p>Open 9am - 5pm</p>
+      <p>4000 Mayflower Hill Dr, Waterville, ME 04901</p>
+      <p>Offices open 9am – 5pm</p>
     </div>
   </div>
 
@@ -453,7 +80,7 @@
     <ul>
       <li>128 credits minimum, 2.00 GPA</li>
       <li>64 credits on campus</li>
-      <li>First-Year Writing course</li>
+      <li>First‑Year Writing course</li>
       <li>Foreign Language requirement</li>
       <li>Areas: Arts, History, Literature, Math, Social Sciences</li>
     </ul>
@@ -468,16 +95,34 @@
   </section>
 
   <section id="tuition" class="container">
-    <h2>Tuition & Financial Aid (2025)</h2>
+    <h2>Tuition &amp; Financial Aid (2025)</h2>
     <table>
       <thead>
-        <tr><th></th><th>On-Campus</th><th>Off-Campus</th></tr>
+        <tr>
+          <th></th>
+          <th>On‑Campus</th>
+          <th>Off‑Campus</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td>Tuition</td><td colspan="2">$69,600</td></tr>
-        <tr><td>Living Costs</td><td>$18,740</td><td>$6,950</td></tr>
-        <tr><td>Total Cost</td><td>$85,420</td><td>$74,400</td></tr>
-        <tr><td>Average Net Price</td><td colspan="2">$31,527</td></tr>
+        <tr>
+          <td>Tuition</td>
+          <td colspan="2">$69,600</td>
+        </tr>
+        <tr>
+          <td>Living Costs</td>
+          <td>$18,740</td>
+          <td>$6,950</td>
+        </tr>
+        <tr>
+          <td>Total Cost</td>
+          <td>$85,420</td>
+          <td>$74,400</td>
+        </tr>
+        <tr>
+          <td>Average Net Price</td>
+          <td colspan="2">$31,527</td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -485,22 +130,35 @@
   <section id="alumni" class="container">
     <h2>Notable Alumni</h2>
     <ul>
-      <li>Hannibal Hamlin – VP under Lincoln</li> 
-      <li>Lucia Cormier – Advocate</li>
-      <li>Stephen King – Author</li>
-      <li>Charles Mayo – Mayo Clinic</li>
-      <li>Daniel Wathen – Maine Chief Justice</li>
-      <li>Dean Kamen – Inventor</li>
+      <li>Hannibal Hamlin – VP under Lincoln</li>
+      <li>Lucia Cormier – Trailblazing politician and women’s rights advocate</li>
+      <li>Stephen King – Renowned author who attended Colby</li>
+      <li>Charles Mayo – Co‑founder of the Mayo Clinic</li>
+      <li>Daniel Wathen – Former Chief Justice of the Maine Supreme Judicial Court</li>
+      <li>Dean Kamen – Inventor of the Segway and medical technology innovator</li>
+      <li>Jeffrey Donovan – Actor known for roles in "Burn Notice" and "Fargo"</li>
+      <li>Anna Kendrick – Actress and singer, known for "Pitch Perfect" and "Up in the Air"</li>
+      <li>Elizabeth Strout – Pulitzer Prize‑winning author of "Olive Kitteridge"</li>
     </ul>
+    <p>
+      Colby graduates have made significant contributions across government, business,
+      social justice, environmental advocacy, and academia. The college’s emphasis on
+      critical thinking and adaptability equips alumni to thrive in diverse fields.
+      Alumni actively support current students through mentorship, internships, and
+      career networking, while also contributing to the college’s continued success.
+    </p>
   </section>
 
   <section id="networking" class="container">
-    <h2>Community & Networking</h2>
+    <h2>Community &amp; Networking</h2>
     <p>Global alumni network provides mentorship, career support, and lifelong connection.</p>
   </section>
 
   <footer>
-    <p>&copy; 2025–2026 Colby College by Sal M. Visit <a href="https://www.colby.edu" target="_blank" rel="noopener">official website</a>.</p>
+    <p>
+      &copy; 2025–2026 Colby College by Sal M. Visit
+      <a href="https://www.colby.edu" target="_blank" rel="noopener">official website</a>.
+    </p>
   </footer>
 
   <script>
@@ -520,12 +178,13 @@
       nav.classList.toggle('open');
     });
 
-    menuToggle.addEventListener('keydown', e => {
+    menuToggle.addEventListener('keypress', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         menuToggle.click();
       }
     });
   </script>
+
 </body>
 </html>
