@@ -11,12 +11,10 @@
     rel="stylesheet"
   />
 
-  <!-- Link to your external stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
-
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <nav>
     <div class="logo" aria-label="Colby College Logo and Name">
       <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -26,17 +24,11 @@
       </svg>
       Colby College
     </div>
-    <div
-      class="menu-toggle"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-      role="button"
-      tabindex="0"
-    >
+    <div class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
     <ul>
-      <li><a href="#intro">Home</a></li>
+      
       <li><a href="#about">About</a></li>
       <li><a href="#academics">Academics</a></li>
       <li><a href="#student-life">Student Life</a></li>
@@ -72,7 +64,10 @@
 
   <section id="about" class="container">
     <h2>About Colby College</h2>
-    <p>We nurture thoughtful, engaged individuals ready to make a difference in a global society.</p>
+    <p>We nurture thoughtful, engaged individuals ready to make a difference in a global society.
+      Colby College is a private liberal arts college in Waterville, Maine, United States.
+       Founded in 1813 as the Maine Literary and Theological Institution, it was renamed Waterville College in 1821
+    </p>
   </section>
 
   <section id="academics" class="container">
@@ -151,10 +146,13 @@
 
   <section id="networking" class="container">
     <h2>Community &amp; Networking</h2>
-    <p>Global alumni network provides mentorship, career support, and lifelong connection.</p>
+    <p>Global alumni network provides mentorship, career support, and lifelong connection.
+      Colby College offers networking opportunities through Colby Connect, an online platform for alumni and students, 
+      and through DavisConnects, its career center. The college also has a global network of alumni clubs, a formal alumni council,
+       and holds various networking events, such as summer receptions in major cities and on-campus events.  
+    </p>
   </section>
-
-  <footer>
+  <footer class="container">
     <p>
       &copy; 2025–2026 Colby College by Sal M. Visit
       <a href="https://www.colby.edu" target="_blank" rel="noopener">official website</a>.
@@ -164,8 +162,7 @@
   <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
-        const intro = document.getElementById('intro');
-        intro.classList.add('hidden');
+        document.getElementById('intro').classList.add('hidden');
       }, 4500);
     });
 
@@ -177,7 +174,6 @@
       menuToggle.setAttribute('aria-expanded', !expanded);
       nav.classList.toggle('open');
     });
-
     menuToggle.addEventListener('keypress', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -185,6 +181,5 @@
       }
     });
   </script>
-
 </body>
 </html>
