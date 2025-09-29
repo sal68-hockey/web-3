@@ -41,8 +41,6 @@ body {
   padding-top: 70px;
   min-height: 100vh;
 }
-
-/* Navigation */
 nav {
   position: fixed;
   top: 0; left: 0;
@@ -109,7 +107,6 @@ nav ul li a:focus::after {
   width: 100%;
 }
 
-/* Mobile toggle */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -150,7 +147,7 @@ nav.open ul {
   .menu-toggle { display: flex; }
 }
 
-/* Intro / Header */
+
 #intro {
   position: fixed;
   inset: 0;
@@ -204,7 +201,6 @@ header {
   border-bottom: 4px solid var(--accent);
 }
 
-/* Sections */
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -258,7 +254,6 @@ section ul li {
   color: var(--dark);
 }
 
-/* Links */
 a {
   color: var(--colby-blue);
   font-weight: 700;
@@ -269,8 +264,6 @@ a:hover {
   color: var(--accent);
   text-decoration: underline;
 }
-
-/* Contact cards */
 .contact-container {
   display: flex;
   flex-wrap: wrap;
@@ -314,7 +307,6 @@ a:hover {
   color: var(--dark);
 }
 
-/* Tables */
 table {
   width: 100%;
   margin-top: var(--space-md);
@@ -348,7 +340,7 @@ tr:hover td {
   }
 }
 
-/* Footer */
+
 footer {
   text-align: center;
   padding: var(--space-xl) var(--space-md);
